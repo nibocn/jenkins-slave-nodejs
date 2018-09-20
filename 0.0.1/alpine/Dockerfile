@@ -5,7 +5,7 @@ ARG NODE_VERSION=v8.12.0
 
 RUN \
     # Install tools
-    apk add --no-cache --update-cache curl \
+    apk add --no-cache --update-cache curl libstdc++ \
         \
     # Install Nodejs
     && mkdir -p /opt/nodejs \
@@ -17,6 +17,9 @@ RUN \
     && ln -s /opt/nodejs/bin/nrm /usr/local/bin \
         \
     # Clean resource
+    && apk del curl \
+    && rm -rf /tmp/* \
+    && rm -rf /var/cache/apk/* \
     && rm -rf /root/.npm/*
 
 VOLUME /root/.npm

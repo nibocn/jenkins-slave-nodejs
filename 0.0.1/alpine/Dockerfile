@@ -1,7 +1,7 @@
 FROM nibo/jenkins-slave:0.0.1-alpine
 MAINTAINER Richard <nibocn@gmail.com>
 
-ARG NODE_VERSION = v8.12.0
+ARG NODE_VERSION=v8.12.0
 
 RUN \
     # Install tools

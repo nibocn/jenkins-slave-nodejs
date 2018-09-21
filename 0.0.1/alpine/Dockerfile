@@ -5,7 +5,7 @@ ARG NODE_VERSION=v8.12.0
 
 RUN \
     # Install tools
-    apk add --no-cache --update-cache curl libstdc++ \
+    apk add --no-cache --update-cache curl libstdc++ git \
         \
     # Install Nodejs
     && mkdir -p /opt/nodejs \

@@ -1,11 +1,12 @@
-FROM nibo/jenkins-slave:0.0.1-alpine
+FROM nibo/jenkins-slave:0.0.1
 MAINTAINER Richard <nibocn@gmail.com>
 
 ARG NODE_VERSION=v8.12.0
 
 RUN \
     # Install tools
-    apk add --no-cache --update-cache curl libstdc++ git \
+    yum makecache fast \
+    && yum install -y git \
         \
     # Install Nodejs
     && mkdir -p /opt/nodejs \
@@ -17,10 +18,10 @@ RUN \
     && ln -s /opt/nodejs/bin/nrm /usr/local/bin \
         \
     # Clean resource
-    && apk del curl \
-    && rm -rf /tmp/* \
-    && rm -rf /var/cache/apk/* \
-    && rm -rf /root/.npm/*
+    && yum clean all \
+    && rm -rf /var/cache/yum/* \
+    rm -rf /tmp/* \
+    rm -rf /root/.npm/*
 
 VOLUME /root/.npm
 

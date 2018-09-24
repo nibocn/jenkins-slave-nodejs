@@ -8,6 +8,12 @@ RUN \
     yum makecache fast \
     && yum install -y git \
         \
+    # Install Docker
+    && yum install -y yum-utils \
+    && yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo \
+    && yum makecache fast \
+    && yum install -y docker-ce \
+        \
     # Install Nodejs
     && mkdir -p /opt/nodejs \
     && curl http://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.gz | tar -xzC /opt/nodejs --strip-components=1 \

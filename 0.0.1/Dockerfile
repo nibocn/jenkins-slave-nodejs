@@ -31,6 +31,7 @@ RUN \
 
 VOLUME /root/.npm
 
+ENV LANG en_US.UTF-8
 ENV NODEJS_HOME /opt/nodejs
 ENV PATH $NODEJS_HOME/bin:$PATH
 
